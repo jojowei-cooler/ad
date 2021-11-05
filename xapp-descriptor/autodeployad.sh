@@ -7,7 +7,7 @@ echo "===>  Built the images of xApps"
 cd ~
 git clone "https://github.com/jojowei-cooler/ad.git" -b master
 cd ad
-docker build -t jojowei/test-ad:0.0.2:${AD} .
+docker build -t jojowei/test-ad:${AD} .
 cd ~
 
 # -----------------------------------

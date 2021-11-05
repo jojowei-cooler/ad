@@ -1,5 +1,5 @@
 {
-        "xapp_name": "ad",
+        "name": "ad",
         "version": "0.0.2",
         "containers": [
             {
@@ -37,7 +37,12 @@
             "rxMessages": ["TS_ANOMALY_ACK"],
             "txMessages": ["TS_ANOMALY_UPDATE"],
             "policies": []
+        },
+        "controls": {
+            "fileStrorage": false
+        },
+        "db" : {
+            "waitForSdl": false
         }
-
 }
 
