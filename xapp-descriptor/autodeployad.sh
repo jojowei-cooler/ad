@@ -2,13 +2,13 @@
 
 AD="0.0.2"
 
-# # -----------------------------------
-# echo "===>  Built the images of xApps"
-# cd ~
-# git clone "https://github.com/ToriRobert/ad.git" -b master
-# cd ad
-# docker build -t nexus3.o-ran-sc.org:10002/o-ran-sc/ric-app-ad:${AD} .
-# cd ~
+# -----------------------------------
+echo "===>  Built the images of xApps"
+cd ~
+git clone "https://github.com/jojowei-cooler/ad.git" -b master
+cd ad
+docker build -t jojowei/test-ad:0.0.2:${AD} .
+cd ~
 
 # -----------------------------------
 echo "===>  On-boarding xApps"
