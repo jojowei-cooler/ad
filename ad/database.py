@@ -52,7 +52,7 @@ class DATABASE(object):
         fetched data from database
     """
 
-    def __init__(self, dbname, user='root', password='root', host="r4-influxdb.ricplt", port='8086'):
+    def __init__(self, dbname, user='root', password='root', host="ricplt-influxdb.ricplt", port='8086'):
         self.data = None
         self.client = DataFrameClient(host, port, user, password, dbname)
 

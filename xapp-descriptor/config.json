@@ -5,8 +5,8 @@
             {
                 "name": "ad",
                 "image": {
-                    "registry": "nexus3.o-ran-sc.org:10002",
-                    "name": "o-ran-sc/ric-app-ad",
+                    "registry": "docker.io",
+                    "name": "jojowei/test-ad",
                     "tag": "0.0.2"
                 }
             }
