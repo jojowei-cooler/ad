@@ -31,6 +31,7 @@ ue_data = None  # needs to be updated in future when live feed will be coming th
 pos = 0
 sdl = SDLWrapper(use_fake_sdl=True)
 
+wei_debug = True
 
 def entry(self):
     """  If ML model is not present in the path, It will trigger training module to train the model.
@@ -56,9 +57,10 @@ def predict(self):
     val = predict_anomaly(self, ue_df)
     if (val is not None) and (len(val) > 2):
         
-        print("\n\n")
-        print(val)
-        print("\n\n")
+        if wei_debug:
+            print("\n\n")
+            print(val)
+            print("\n\n")
 
         msg_to_ts(self, val)
 
@@ -85,15 +87,23 @@ def predict_anomaly(self, df):
         if deg:
             df['Degradation'] = deg
 
-            print("\n\nprint the data type")
-            print(type(deg))
-            print("\n\n")
+            if wei_debug:
+                print("\n\nprint the data field")
+                print(df['du-id'])
+                print("\n")
+                print(df['ue-id'])
+                print("\n")
+                print(df['measTimeStampRf'])
+                print("\n")
+                print(df['Degradation'])
+                print("\n")
 
             db_df = df[['du-id', 'ue-id', 'measTimeStampRf', 'Degradation']]
             
-            print("\n\nprint the data frame")
-            print(db_df)
-            print("\n\n")
+            if wei_debug:
+                print("\n\nprint the data frame")
+                print(db_df)
+                print("\n\n")
 
             # rmr send 30003(TS_ANOMALY_UPDATE), should trigger registered callback
             result = json.loads(db_df.to_json(orient='records'))

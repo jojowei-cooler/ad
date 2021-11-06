@@ -53,7 +53,7 @@ class modelling(object):
         sc = joblib.load('scale')
         self.X = sc.transform(X)
 
-    def isoforest(self, outliers_fraction=0.05, random_state=42, push_model=False):
+    def isoforest(self, outliers_fraction=0.1, random_state=42, push_model=False): # modify the outlier
         """ Train isolation forest
 
         Parameters
@@ -65,7 +65,7 @@ class modelling(object):
         random_state: int (default=42)
         """
         iso = IsolationForest(contamination=outliers_fraction, random_state=random_state)
-        md = iso.fit(self.data.values, None)
+        md = iso.fit(self.data.values, None) # add .values to avoid the warning message (jojowei modification)
         if push_model:
             joblib.dump(self.cols, 'params')
             joblib.dump(md, 'model')
