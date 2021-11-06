@@ -55,9 +55,11 @@ def predict(self):
     ue_df = pd.DataFrame([sample], columns=db.data.columns)
     val = predict_anomaly(self, ue_df)
     if (val is not None) and (len(val) > 2):
+        
         print("\n\n")
         print(val)
         print("\n\n")
+
         msg_to_ts(self, val)
 
 
@@ -82,10 +84,17 @@ def predict_anomaly(self, df):
         deg = cp.cause(df)
         if deg:
             df['Degradation'] = deg
-            db_df = df[['du-id', 'ue-id', 'measTimeStampRf', 'Degradation']]
+
+            print("\n\nprint the data type")
+            print(type(deg))
             print("\n\n")
+
+            db_df = df[['du-id', 'ue-id', 'measTimeStampRf', 'Degradation']]
+            
+            print("\n\nprint the data frame")
             print(db_df)
             print("\n\n")
+
             # rmr send 30003(TS_ANOMALY_UPDATE), should trigger registered callback
             result = json.loads(db_df.to_json(orient='records'))
             val = json.dumps(result).encode()

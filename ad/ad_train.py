@@ -65,7 +65,7 @@ class modelling(object):
         random_state: int (default=42)
         """
         iso = IsolationForest(contamination=outliers_fraction, random_state=random_state)
-        md = iso.fit(self.data, None)
+        md = iso.fit(self.data.values, None)
         if push_model:
             joblib.dump(self.cols, 'params')
             joblib.dump(md, 'model')
