@@ -85,11 +85,11 @@ def predict_anomaly(self, df):
                 print("\n\nprint the data field")
                 print(type(df['du-id'].values))
                 print("\n")
-                print(df['ue-id'].astype(str))
+                print(str(df['ue-id'].values))
                 print("\n")
-                print(df['measTimeStampRf'].astype(str))
+                print(df['measTimeStampRf'].values[0])
                 print("\n")
-                print(df.Degradation.apply(str))
+                print(type(df['Degradation'].values[0]))
                 print("\n")
 
             db_df = df[['du-id', 'ue-id', 'measTimeStampRf', 'Degradation']]

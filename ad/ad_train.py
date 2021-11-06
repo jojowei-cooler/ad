@@ -53,7 +53,7 @@ class modelling(object):
         sc = joblib.load('scale')
         self.X = sc.transform(X)
 
-    def isoforest(self, outliers_fraction=0.01, random_state=42, push_model=False): # modify the outlier
+    def isoforest(self, outliers_fraction=0.05, random_state=42, push_model=False): # modify the outlier
         """ Train isolation forest
 
         Parameters
