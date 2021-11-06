@@ -56,12 +56,6 @@ def predict(self):
     ue_df = pd.DataFrame([sample], columns=db.data.columns)
     val = predict_anomaly(self, ue_df)
     if (val is not None) and (len(val) > 2):
-        
-        if wei_debug:
-            print("\n\n")
-            print(val)
-            print("\n\n")
-
         msg_to_ts(self, val)
 
 
@@ -88,14 +82,18 @@ def predict_anomaly(self, df):
             df['Degradation'] = deg
 
             if wei_debug:
+                print("\n")
+                print(df)
+                print("\n")
+
                 print("\n\nprint the data field")
-                print(df['du-id'])
+                print(type(df['du-id']))
                 print("\n")
-                print(df['ue-id'])
+                print(df['ue-id'].values)
                 print("\n")
-                print(df['measTimeStampRf'])
+                print(df.iloc[1]['measTimeStampRf'])
                 print("\n")
-                print(df['Degradation'])
+                print(df.iloc[0]['Degradation'])
                 print("\n")
 
             db_df = df[['du-id', 'ue-id', 'measTimeStampRf', 'Degradation']]
