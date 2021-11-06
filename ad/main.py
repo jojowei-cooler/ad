@@ -82,26 +82,17 @@ def predict_anomaly(self, df):
             df['Degradation'] = deg
 
             if wei_debug:
-                print("\n")
-                print(df)
-                print("\n")
-
                 print("\n\nprint the data field")
-                print(type(df['du-id']))
+                print(type(df['du-id'].values))
                 print("\n")
-                print(df['ue-id'].values)
+                print(df['ue-id'].astype(str))
                 print("\n")
-                print(df.iloc[1]['measTimeStampRf'])
+                print(df['measTimeStampRf'].astype(str))
                 print("\n")
-                print(df.iloc[0]['Degradation'])
+                print(df.Degradation.apply(str))
                 print("\n")
 
             db_df = df[['du-id', 'ue-id', 'measTimeStampRf', 'Degradation']]
-            
-            if wei_debug:
-                print("\n\nprint the data frame")
-                print(db_df)
-                print("\n\n")
 
             # rmr send 30003(TS_ANOMALY_UPDATE), should trigger registered callback
             result = json.loads(db_df.to_json(orient='records'))
