@@ -29,7 +29,7 @@ sleep 5
 echo "===>  Deploying xApps"
 dms_cli install --xapp_chart_name=ad --version=0.0.2 --namespace=ricxapp
 
-sleep 120
+sleep 90
 # -----------------------------------
 echo "===>  Checking the pods of xApps"
 kubectl get pod -n ricxapp

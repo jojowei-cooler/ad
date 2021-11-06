@@ -17,10 +17,10 @@ sleep 5
 
 # -----------------------------------
 echo "===>  Undeploying xApps"
-dms_cli uninstall --xapp_chart_name=ad --namespace=ricxapp
-# kubectl delete configmap -n ricxapp configmap-ricxapp-ad-appenv configmap-ricxapp-ad-appconfig
-# kubectl delete deploy -n ricxapp ricxapp-ad
-# kubectl delete service -n ricxapp service-ricxapp-ad-rmr
+kubectl delete configmap -n ricxapp configmap-ricxapp-ad-appenv configmap-ricxapp-ad-appconfig
+kubectl delete deploy -n ricxapp ricxapp-ad
+kubectl delete service -n ricxapp service-ricxapp-ad-rmr
+helm del --purge ad
 
 # -----------------------------------
 echo "===>  Checking the pods of xApps"
