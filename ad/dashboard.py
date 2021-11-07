@@ -10,7 +10,6 @@ def upload_to_dashboard(ue_name, du_name, degradation, timestamp):
     pre_url = 'https://140.118.122.115:5033/Thingworx/Things/'
     # url = pre_url + ThingName + '/Services/' + ServiceName
     url=pre_url+ThingName+'/Services/'+ServiceName
-    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
     payload={
         "UE" : ue_name,
         "DU": du_name,
