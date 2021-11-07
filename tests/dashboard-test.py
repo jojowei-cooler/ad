@@ -16,9 +16,8 @@ def job():
     # Appkey is from thingworx, for accessing thingworx key
     
     pre_url = 'https://140.118.122.115:5033/Thingworx/Things/'
-    # url = pre_url + ThingName + '/Services/' + ServiceName
     url=pre_url+ThingName+'/Services/'+ServiceName
-    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+
     payload={
         "UE" : random.choice(ue_name),
         "DU": random.choice(du_name),

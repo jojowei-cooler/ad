@@ -95,7 +95,7 @@ class CAUSE(object):
             deg.append('RSRQ')
         if sample.iloc[0]['rssinr'] <= Range['rssinr']-20:
             deg.append('RSSINR')
-        if sample.iloc[0]['prb_usage'] <= Range['prb_usage']*0.6:
+        if sample.iloc[0]['prb_usage'] <= Range['prb_usage']*0.7:
             deg.append('prb_usage')
         if len(deg) == 0:
             deg = False

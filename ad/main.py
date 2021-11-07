@@ -21,7 +21,7 @@ import schedule
 from ricxappframe.xapp_frame import Xapp
 from ad_model.ad_model import ad_predict, CAUSE
 from ad_train import train
-from dashboard import upload_to_dashboard
+from dashboard import upload_to_dashboard, delete_dashboard_element
 from ricxappframe.xapp_sdl import SDLWrapper
 from database import DATABASE, DUMMY
 import insert as ins
@@ -87,8 +87,8 @@ def predict_anomaly(self, df):
             DU=str(df['du-id'].values[0])
             Degradation=str(df['Degradation'].values[0])
             Timestamp=str(df['measTimeStampRf'].values[0])
-            upload_to_dashboard(UE, DU, Degradation, Timestamp)
-
+            # upload_to_dashboard(UE, DU, Degradation, Timestamp)
+            delete_dashboard_element(UE)
             db_df = df[['du-id', 'ue-id', 'measTimeStampRf', 'Degradation']]
 
             # rmr send 30003(TS_ANOMALY_UPDATE), should trigger registered callback
@@ -96,9 +96,8 @@ def predict_anomaly(self, df):
             val = json.dumps(result).encode()
             df.loc[db_df.index, 'Degradation'] = db_df['Degradation']
         else:
-            print("\ngood ue")
-            print(df['ue-id'].values[0])
-            print("\n")
+            UE=str(df['ue-id'].values[0])
+            delete_dashboard_element(UE)
         
     df.index = df.measTimeStampRf
     result = json.loads(df.to_json(orient='records'))
