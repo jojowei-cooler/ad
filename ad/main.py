@@ -87,8 +87,8 @@ def predict_anomaly(self, df):
             DU=str(df['du-id'].values[0])
             Degradation=str(df['Degradation'].values[0])
             Timestamp=str(df['measTimeStampRf'].values[0])
-            # upload_to_dashboard(UE, DU, Degradation, Timestamp)
-            delete_dashboard_element(UE)
+            upload_to_dashboard(UE, DU, Degradation, Timestamp)
+            
             db_df = df[['du-id', 'ue-id', 'measTimeStampRf', 'Degradation']]
 
             # rmr send 30003(TS_ANOMALY_UPDATE), should trigger registered callback
