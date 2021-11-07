@@ -21,6 +21,7 @@ import schedule
 from ricxappframe.xapp_frame import Xapp
 from ad_model.ad_model import ad_predict, CAUSE
 from ad_train import train
+from dashboard import upload_to_dashboard
 from ricxappframe.xapp_sdl import SDLWrapper
 from database import DATABASE, DUMMY
 import insert as ins
@@ -83,21 +84,26 @@ def predict_anomaly(self, df):
 
             if wei_debug:
                 print("\n\nprint the data field")
-                print(type(df['du-id'].values))
+                print(df['du-id'].values[0])
                 print("\n")
-                print(str(df['ue-id'].values))
+                print(df['ue-id'].values[0])
                 print("\n")
                 print(df['measTimeStampRf'].values[0])
                 print("\n")
-                print(type(df['Degradation'].values[0]))
+                print(df['Degradation'].values[0])
                 print("\n")
-
+            upload_to_dashboard(df['ue-id'].values[0], df['du-id'].values[0], df['measTimeStampRf'].values[0], df['Degradation'].values[0])
             db_df = df[['du-id', 'ue-id', 'measTimeStampRf', 'Degradation']]
 
             # rmr send 30003(TS_ANOMALY_UPDATE), should trigger registered callback
             result = json.loads(db_df.to_json(orient='records'))
             val = json.dumps(result).encode()
             df.loc[db_df.index, 'Degradation'] = db_df['Degradation']
+        print("\n")
+        print(df['ue-id'].values[0])
+        print("\n")
+        print(type(df['ue-id'].values[0]))
+        print("\n")
     df.index = df.measTimeStampRf
     result = json.loads(df.to_json(orient='records'))
 

@@ -28,6 +28,9 @@ ENV RMR_SEED_RT /opt/route/local.rt
 RUN apk update && apk add gcc musl-dev
 RUN pip install ricxappframe
 
+# package needed by dashboard
+RUN pip install requests
+
 # Install
 COPY setup.py /tmp
 COPY LICENSE.txt /tmp/
