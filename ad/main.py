@@ -73,15 +73,26 @@ def predict_anomaly(self, df):
     ......
     val: anomalus sample info(UEID, DUID, TimeStamp, Degradation type)
     """
-    print('\n')
+    print('\n1')
     print(df['ue-id'])
     print('\n')
+
     pred = ad_predict(df)
     df['Anomaly'] = pred
     df['Degradation'] = ''
     val = None
+
+    print('\n2')
+    print(pred)
+    print('\n')
+
     if 1 in pred:
         deg = cp.cause(df)
+
+        print('\n3')
+        print(deg)
+        print('\n')
+        
         if deg:
             df['Degradation'] = deg
 
