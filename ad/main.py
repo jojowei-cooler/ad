@@ -73,6 +73,9 @@ def predict_anomaly(self, df):
     ......
     val: anomalus sample info(UEID, DUID, TimeStamp, Degradation type)
     """
+    print('\n')
+    print(df['ue-id'])
+    print('\n')
     pred = ad_predict(df)
     df['Anomaly'] = pred
     df['Degradation'] = ''
