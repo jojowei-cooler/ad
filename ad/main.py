@@ -109,9 +109,9 @@ def predict_anomaly(self, df):
             result = json.loads(db_df.to_json(orient='records'))
             val = json.dumps(result).encode()
             df.loc[db_df.index, 'Degradation'] = db_df['Degradation']
-        else:
-            UE=str(df['ue-id'].values[0])
-            delete_dashboard_element(UE)
+    else:
+        UE=str(df['ue-id'].values[0])
+        delete_dashboard_element(UE)
         
     df.index = df.measTimeStampRf
     result = json.loads(df.to_json(orient='records'))
