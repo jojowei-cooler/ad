@@ -1,4 +1,6 @@
 import requests
+import requests.packages.urllib3
+requests.packages.urllib3.disable_warnings()
 import json
 
 def upload_to_dashboard(ue_name, du_name, degradation, timestamp):

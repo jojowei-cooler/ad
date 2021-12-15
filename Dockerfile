@@ -29,7 +29,7 @@ RUN apk update && apk add gcc musl-dev
 RUN pip install ricxappframe
 
 # package needed by dashboard
-RUN pip install requests
+RUN pip install requests urllib3
 
 # Install
 COPY setup.py /tmp
