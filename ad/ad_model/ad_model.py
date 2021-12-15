@@ -87,15 +87,15 @@ class CAUSE(object):
         """ store if a particular parameter is below threshold and return """
 
         deg = []
-        if sample.iloc[0]['throughput'] < Range['throughput']*0.6:
+        if sample.iloc[0]['throughput'] < Range['throughput']*0.75:
             deg.append('Throughput')
-        if sample.iloc[0]['rsrp'] <= Range['rsrp']-15:
+        if sample.iloc[0]['rsrp'] <= Range['rsrp']-25:
             deg.append('RSRP')
-        if sample.iloc[0]['rsrq'] <= Range['rsrq']-15:
+        if sample.iloc[0]['rsrq'] <= Range['rsrq']-25:
             deg.append('RSRQ')
-        if sample.iloc[0]['rssinr'] <= Range['rssinr']-20:
+        if sample.iloc[0]['rssinr'] <= Range['rssinr']-25:
             deg.append('RSSINR')
-        if sample.iloc[0]['prb_usage'] <= Range['prb_usage']*0.7:
+        if sample.iloc[0]['prb_usage'] <= Range['prb_usage']*0.75:
             deg.append('prb_usage')
         if len(deg) == 0:
             deg = False
