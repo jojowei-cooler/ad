@@ -90,7 +90,7 @@ def predict_anomaly(self, df):
             DU=str(df['du-id'].values[0])
             Degradation=str(df['Degradation'].values[0])
             Timestamp=str(df['measTimeStampRf'].values[0])
-            upload_to_dashboard(UE, DU, Degradation, Timestamp)
+            # upload_to_dashboard(UE, DU, Degradation, Timestamp)
             
             db_df = df[['du-id', 'ue-id', 'measTimeStampRf', 'Degradation']]
 
@@ -100,7 +100,7 @@ def predict_anomaly(self, df):
             df.loc[db_df.index, 'Degradation'] = db_df['Degradation']
     else:
         UE=str(df['ue-id'].values[0])
-        delete_dashboard_element(UE)
+        # delete_dashboard_element(UE)
         
     df.index = df.measTimeStampRf
     result = json.loads(df.to_json(orient='records'))
